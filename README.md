@@ -15,3 +15,7 @@ In the ```data/constants.py``` file, you can find the ranges of the different to
 ## Purpose
 
 The goal is to generate a list of users similar to that of an exchange. To later be able to verify their solvency and check if all users have been taken into account for balance sheet accounting.
+
+## Acknowledgements
+
+I'd like to extend my sincere gratitude to [Bruno Carthery]([link to GitHub profile](https://github.com/brunodev12)) for their valuable contribution to this project.
