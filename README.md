@@ -18,4 +18,4 @@ The goal is to generate a list of users similar to that of an exchange. To later
 
 ## Acknowledgements
 
-I'd like to extend my sincere gratitude to [Bruno Carthery]([link to GitHub profile](https://github.com/brunodev12)) for their valuable contribution to this project.
+I'd like to extend my sincere gratitude to [Bruno Carthery](https://github.com/brunodev12) for their valuable contribution to this project.
