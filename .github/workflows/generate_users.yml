@@ -1,0 +1,50 @@
+name: Generate random user list
+
+on:
+  workflow_dispatch:
+    inputs:
+      amount:
+        description: 'Amount of users'
+        required: true
+        default: '10000'
+      liabilities:
+        description: 'Tokens to include. Coma separed symbol. Leave empty to include them all'
+        required: true
+        default: ''
+
+jobs:
+  randomize:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+
+    - name: Set up Python 3.10.6
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10.6
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # pip install -r requirements.txt  
+
+    - name: Run Python code
+      run: python generate_client_list.py -u ${{ github.event.inputs.amount }}
+      
+    - name: Commit files
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add client_list.json
+        git commit -m "Users generated at: $commit_time" -a
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+          github_token: ${{ secrets.PUSHER }}
+  
+
