@@ -12,7 +12,7 @@ def check_tokens(tokens_str):
 
     for token in tokens:
         normalized_token = tokens_dict.get(token.upper(), None)
-        if normalized_token:
+        if normalized_token and (normalized_token not in normalized_tokens):
             normalized_tokens.append(normalized_token)
     
     return normalized_tokens

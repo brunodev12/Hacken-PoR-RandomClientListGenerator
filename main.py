@@ -7,18 +7,15 @@ def run():
     args = parse_arguments()
 
     if args.users <= 0:
-        print("Error: The number of users must be a positive integer.")
-        return
+        raise Exception("The number of users must be a positive integer.")
     
     if not args.file.endswith('.json'):
-        print("Error: The output file name must end with '.json'.")
-        return
+        raise Exception("The output file name must end with '.json'.")
     
     if args.tokens:
         tokens = check_tokens(args.tokens)
         if tokens==[]:
-            print("Error: Token not found")
-            return
+            raise Exception("Token not found.")
     else:
         tokens = []
 
