@@ -35,7 +35,7 @@ tokens_dict = {
     "ETH" : "ETH", "ETHER" : "ETH", "ETHEREUM" : "ETH",
     "MATIC" : "MATIC", "POLYGON" : "MATIC",
     "ADA" : "ADA", "CARDANO" : "ADA",
-    "DOT" : "DOT", "POLKADOT" : "POLKADOT",
+    "DOT" : "DOT", "POLKADOT" : "DOT",
     "TRX" : "TRX", "TRON" : "TRX",
     "BNB" : "BNB", "BSC" : "BNB",
     "XRP" : "XRP",
