@@ -12,15 +12,14 @@ def get_decimal_length(number):
         return 0
 
 def generate_number(minimum, maximum, displacement=3, currency=None):
-    divisions = int(math.log10(maximum / minimum))
     
-    scale_factor = math.log10(maximum / minimum) / divisions
     decimals = get_decimal_length(minimum)
 
     ranges = ranges_dict.get(currency, None)
     probabilities = probabilities_dict.get(currency, None)
-    total_sum = 0
     if ranges is None:
+        divisions = int(math.log10(maximum / minimum))
+        scale_factor = math.log10(maximum / minimum) / divisions
         ranges = []
         probabilities = []
         total_sum = 0

@@ -10,5 +10,9 @@ def parse_arguments():
      # Flag "-f" for output file name
     parser.add_argument("-f", "--file", type=str, default="client_list.json",
                         help="Name of the output file. Defaults to 'client_list.json'.")
+    
+    # Flag "-t" for users tokens
+    parser.add_argument("-t", "--tokens", type=str, default="",
+                        help="Tokens that the client will have. Defaults to random tokens (BTC,ETH,MATIC,ADA...)")
 
     return parser.parse_args()
