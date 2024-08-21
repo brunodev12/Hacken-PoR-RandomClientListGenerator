@@ -1,5 +1,5 @@
 from utils.client_generator import generate_client_list
-from utils.file_ops import save_csv, save_json
+from utils.file_ops import save_csv
 from utils.arguments import parse_arguments
 from utils.check_arguments import check_tokens
 
