@@ -1,6 +1,8 @@
 import random
 import math
 from data.constants import ranges_dict, probabilities_dict
+from decimal import Decimal, ROUND_DOWN
+
 
 def get_decimal_length(number):
     string = "{:.20f}".format(number).rstrip('0')
@@ -10,6 +12,22 @@ def get_decimal_length(number):
         return decimal_length
     else:
         return 0
+
+
+def generate_number_with_decimals(range_:list, decimals:int) -> str:
+
+    adjusted_number = Decimal(random.uniform(range_[0], range_[1]))
+
+    factor = Decimal('1.' + '0' * decimals)
+    adjusted_number = adjusted_number.quantize(factor, rounding=ROUND_DOWN)
+
+    if adjusted_number == 0:
+        formatted_number = "0.0"
+    else:
+        formatted_number = f"{adjusted_number:f}"
+
+    return formatted_number
+
 
 def generate_number(minimum, maximum, displacement=3, currency=None):
     
@@ -42,9 +60,8 @@ def generate_number(minimum, maximum, displacement=3, currency=None):
     for range_, probability in zip(ranges, probabilities):
         cumulative_probability += probability
         if random_number < cumulative_probability:
-            adjusted_number = round(random.uniform(range_[0], range_[1]), decimals)
-            return str(int(adjusted_number*(10**decimals)))
+            adjusted_number = generate_number_with_decimals(range_, decimals)
+            return adjusted_number
 
-    adjusted_number = round(random.uniform(ranges[-1][0], ranges[-1][1]), decimals)
-
-    return str(int(adjusted_number*(10**decimals)))
+    adjusted_number = generate_number_with_decimals(range_, decimals)
+    return adjusted_number

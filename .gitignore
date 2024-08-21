@@ -1,4 +1,4 @@
 __pycache__
-out/*
-!out/client_list.json
+out/client_list.json
 test.py
+modified_file.csv
